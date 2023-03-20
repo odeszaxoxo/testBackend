@@ -1,6 +1,4 @@
 /* eslint-disable func-names */
-import { Server } from 'socket.io';
-
 const express = require('express');
 const http = require('http');
 
@@ -20,7 +18,7 @@ app.configure(function () {
 });
 const server = http.createServer(app);
 
-const io = new Server(server, {
+const io = require('socket.io')(server, {
   cors: {
     origin: '*',
   },
