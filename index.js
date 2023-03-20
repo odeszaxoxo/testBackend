@@ -19,6 +19,7 @@ const io = require('socket.io')(server, {
   cors: {
     origin: '*',
   },
+  transports: ['websocket', 'polling', 'flashsocket'],
 });
 
 const users = {};
