@@ -1,8 +1,9 @@
 /* eslint-disable func-names */
 const express = require('express');
 const http = require('http');
+const Server = require('socket.io');
 
-const port = 8080;
+const port = 3001;
 
 const app = express();
 const cors = require('cors');
@@ -15,7 +16,7 @@ app.get('/test', function (req, res) {
 
 const server = http.createServer(app);
 
-const io = require('socket.io')(server, {
+const io = new Server(server, {
   cors: {
     origin: '*',
   },
