@@ -7,15 +7,10 @@ const cors = require('cors');
 
 app.use(cors());
 
-const allowCrossDomain = function (req, res) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-};
-
-app.configure(function () {
-  app.use(allowCrossDomain);
+app.get('/test', function (req, res, next) {
+  res.json({ msg: 'This is CORS-enabled for all origins!' });
 });
+
 const server = http.createServer(app);
 
 const io = require('socket.io')(server, {
