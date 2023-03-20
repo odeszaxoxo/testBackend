@@ -1,9 +1,11 @@
 const express = require('express');
 const http = require('http');
+
 const app = express();
 const server = http.createServer(app);
-const socket = require('socket.io');
 const cors = require('cors');
+
+app.use(cors());
 
 const io = require('socket.io')(server, {
   cors: {
@@ -19,7 +21,7 @@ const socketToRoom = {};
 io.on('connection', (socket) => {
   socket.on('join room', (roomID) => {
     if (users[roomID]) {
-      const length = users[roomID].length;
+      const { length } = users[roomID];
 
       // if 4 people have joined already, alert that room is full
       if (length === 2) {
