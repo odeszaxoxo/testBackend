@@ -11,7 +11,7 @@ const cors = require('cors');
 app.use(cors());
 
 app.get('/test', function (req, res) {
-  res.json({ msg: 'This is CORS-enabled for all origins!' });
+  res.json({ msg: 'test' });
 });
 
 const server = http.createServer(app);
