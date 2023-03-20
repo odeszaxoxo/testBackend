@@ -1,7 +1,7 @@
 /* eslint-disable func-names */
 const express = require('express');
 const http = require('http');
-const Server = require('socket.io');
+const { Server } = require('socket.io');
 
 const port = 3001;
 
