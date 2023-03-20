@@ -2,12 +2,14 @@
 const express = require('express');
 const http = require('http');
 
+const port = process.env.PORT || 3001;
+
 const app = express();
 const cors = require('cors');
 
 app.use(cors());
 
-app.get('/test', function (req, res, next) {
+app.get('/test', function (req, res) {
   res.json({ msg: 'This is CORS-enabled for all origins!' });
 });
 
@@ -84,4 +86,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(() => console.log('server is running'));
+server.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
