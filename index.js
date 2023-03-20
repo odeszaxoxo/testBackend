@@ -8,9 +8,9 @@ const cors = require('cors');
 app.use(cors());
 
 const io = require('socket.io')(server, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST'],
+  allowRequest: (req, callback) => {
+    const noOriginHeader = req.headers.origin === undefined;
+    callback(null, noOriginHeader);
   },
 });
 
