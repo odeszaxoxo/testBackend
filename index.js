@@ -2,10 +2,13 @@ const express = require('express');
 const http = require('http');
 
 const app = express();
-const server = http.createServer(app);
 const cors = require('cors');
 
 app.use(cors());
+app.use((req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+});
+const server = http.createServer(app);
 
 const io = require('socket.io')(server, {
   allowRequest: (req, callback) => {
