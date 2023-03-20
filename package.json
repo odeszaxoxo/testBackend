@@ -1,0 +1,21 @@
+{
+  "name": "VideoChatBackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd .. && npm start",
+    "dev": "../../node_modules/.bin/concurrently \\\"node index.js\\\" \\\"npm run client\\\""
+  },
+  "keywords": [],
+  "author": "odeszaxo",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1"
+  }
+}
