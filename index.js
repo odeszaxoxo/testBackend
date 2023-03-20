@@ -1,3 +1,5 @@
+import { Server } from 'socket.io';
+
 const express = require('express');
 const http = require('http');
 
@@ -10,7 +12,7 @@ app.use((req, res) => {
 });
 const server = http.createServer(app);
 
-const io = require('socket.io')(server, {
+const io = new Server(server, {
   cors: {
     origin: '*',
   },
