@@ -33,9 +33,11 @@ app.use('/peerjs', ExpressPeerServer(server, opinions));
 
 io.on('connection', (socket) => {
   socket.on('join-room', (roomId, userId, userName) => {
+    console.log('user joined', roomId, userId, userName);
     socket.join(roomId);
     setTimeout(() => {
       socket.to(roomId).broadcast.emit('user-connected', userId);
+      console.log('user connected');
     }, 1000);
     socket.on('message', (message) => {
       io.to(roomId).emit('createMessage', message, userName);
