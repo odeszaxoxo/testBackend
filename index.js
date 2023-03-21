@@ -5,12 +5,19 @@ const app = express();
 const { ExpressPeerServer } = require('peer');
 const cors = require('cors');
 
+const port = process.env.PORT || 3030;
+
 app.use(
   cors({
     origin: '*',
   })
 );
 const server = http.createServer(app);
+
+// eslint-disable-next-line func-names
+app.get('/', function (req, res) {
+  res.json({ msg: 'test' });
+});
 
 const io = require('socket.io')(server, {
   cors: {
@@ -36,4 +43,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(process.env.PORT || 3030);
+server.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
