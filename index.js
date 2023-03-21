@@ -2,20 +2,27 @@ const express = require('express');
 const http = require('http');
 
 const app = express();
+const { ExpressPeerServer } = require('peer');
+const cors = require('cors');
+
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 const server = http.createServer(app);
+
 const io = require('socket.io')(server, {
   cors: {
     origin: '*',
   },
 });
-const { ExpressPeerServer } = require('peer');
 
 const opinions = {
   debug: true,
 };
 
 app.use('/peerjs', ExpressPeerServer(server, opinions));
-app.use(express.static('public'));
 
 io.on('connection', (socket) => {
   socket.on('join-room', (roomId, userId, userName) => {
