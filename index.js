@@ -8,7 +8,11 @@ const port = process.env.PORT || 10000;
 const app = express();
 const cors = require('cors');
 
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 
 app.get('/test', function (req, res) {
   res.json({ msg: 'test' });
